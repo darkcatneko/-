@@ -7,6 +7,7 @@ public class EventScriptableObject :ScriptableObject
 {
     public int ID;
     public EventType EventType;
+    public Trigger Trigger;
     public int ChangeValue;
     public Sprite EventPic;
     public float Chance;    
@@ -20,4 +21,11 @@ public enum EventType
 {
     Positive,
     Negetive,
+}
+[System.Serializable]
+public enum Trigger
+{
+    Fire,
+    Taiwan,
+    Unicorn,
 }
