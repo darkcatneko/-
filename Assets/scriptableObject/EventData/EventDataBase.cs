@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class EventDataBase : ScriptableObject
 {
-    public List<EventDataBase> EventData = new List<EventDataBase>();
+    public List<EventScriptableObject> EventData = new List<EventScriptableObject>();
+    public EventScriptableObject FindEvent(int a)
+    {
+        foreach (var item in EventData)
+        {
+            if (item.ID == a)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
 }
