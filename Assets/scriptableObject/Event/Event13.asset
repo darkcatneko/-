@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0351cc94a20fd4249ad9eaaa3995ff8b, type: 3}
-  m_Name: Event1
+  m_Name: Event13
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 13
   EventType: 0
   Trigger: 0
-  ChangeValue: 61
+  ChangeValue: 70
   EventPic: {fileID: 0}
   Chance: 4
-  EventName: "\u5929\u4E0A\u88DC\u9B54\u73A9\u8D77\u4F86"
-  EventDescribe: "\u6211\u8981\u62BD\u5410\u96DE\u8001\u5E2B"
+  EventName: "\u6599\u7406\u76F4\u64AD\u5713\u6EFF\u5B8C\u6210"
+  EventDescribe: "\u7576\u6211\u8001\u5A46\u9738\u812B"
