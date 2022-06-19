@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FBKDD
   m_EditorClassIdentifier: 
   ID: 3
-  Sound: {fileID: 0}
+  Sound: {fileID: 8300000, guid: 0e973f125549f9841967335e888f801c, type: 3}
   UniverseName: "\u5D29\u58DE\u4E16\u754C"
   UniverseDescribe: "\u5728\u9019\u9023\u4EBA\u90FD\u58DE\u6389\u4E86"
   UniversePic: {fileID: 21300000, guid: bb85907573426034eb924e56e5db3ef9, type: 3}
