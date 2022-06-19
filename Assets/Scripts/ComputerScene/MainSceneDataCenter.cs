@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
-    public int Health = 3; public Image[] HeartPics = new Image[3];
+    public int Health = 3; public Image[] HeartPics = new Image[3]; public Image[] Icons = new Image[3];
     public bool Fire;public bool Unicorn;public bool Taiwan;
     public static MainSceneDataCenter instance = new MainSceneDataCenter();
     public int Viewer = 0;public Image vtuber;
@@ -28,23 +28,30 @@ public class MainSceneDataCenter : MonoBehaviour
     void Start()
     {
         vtuber.sprite = mygame.myUniverse.UniversePic;
+        State = GameState.FreeMove;
     }
 
     // Update is called once per frame
     void Update()
     {
         ViewerCount.text = Viewer.ToString();
+        HeartCheck();
     }
-    public void EventTrigger()
+    public void EventTriggerButton()
+    {
+        StartCoroutine("EventTrigger");
+    }
+    public IEnumerator EventTrigger()
     {
         EventScriptableObject a = GenEvent();
         if (State == GameState.FreeMove)
         {
             State = GameState.EventTrigger;
             Egganimator.SetBool("Egging", true);
+            yield return new WaitForSeconds(4f);
             if (a.EventType == EventType.Negetive)
             {
-                //反版
+                EventBlock.GetComponent<Image>().sprite = Board[1];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
                 EventDescribe.text = a.EventDescribe;
@@ -55,7 +62,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else if (a.EventType == EventType.Positive)
             {
-                //正版
+                EventBlock.GetComponent<Image>().sprite = Board[0];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
                 EventDescribe.text = a.EventDescribe;
@@ -66,7 +73,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else 
             {
-                //反版
+                EventBlock.GetComponent<Image>().sprite = Board[1];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
                 EventDescribe.text = a.EventDescribe;
@@ -77,10 +84,36 @@ public class MainSceneDataCenter : MonoBehaviour
                 //生成音效
             }
             EventBlock.SetActive(true);
-            Invoke("eggEnd", 4f);
+            eggEnd();
         }
         
 
+    }
+    public void HeartCheck()
+    {
+        switch(Health)
+        {
+            case 0:
+                HeartPics[0].sprite = Heart[0];
+                HeartPics[1].sprite = Heart[0];
+                HeartPics[2].sprite = Heart[0];
+                return;
+            case 1:
+                HeartPics[0].sprite = Heart[1];
+                HeartPics[1].sprite = Heart[0];
+                HeartPics[2].sprite = Heart[0];
+                return;
+            case 2:
+                HeartPics[0].sprite = Heart[1];
+                HeartPics[1].sprite = Heart[1];
+                HeartPics[2].sprite = Heart[0];
+                return;
+            case 3:
+                HeartPics[0].sprite = Heart[1];
+                HeartPics[1].sprite = Heart[1];
+                HeartPics[2].sprite = Heart[1];
+                return;
+        }
     }
     public void CheckDanger(EventScriptableObject a)
     {
@@ -89,6 +122,7 @@ public class MainSceneDataCenter : MonoBehaviour
             if (Fire == false)
             {
                 Fire = true;
+                Icons[0].color = new Color(1, 1, 1, 1);
             }
             else
             {
@@ -100,6 +134,7 @@ public class MainSceneDataCenter : MonoBehaviour
             if (Unicorn == false)
             {
                 Unicorn = true;
+                Icons[1].color = new Color(1, 1, 1, 1);
             }
             else
             {
@@ -111,6 +146,7 @@ public class MainSceneDataCenter : MonoBehaviour
             if (Taiwan == false)
             {
                 Taiwan = true;
+                Icons[2].color = new Color(1, 1, 1, 1);
             }
             else
             {
@@ -133,7 +169,7 @@ public class MainSceneDataCenter : MonoBehaviour
     }
     public void eggEnd()
     {
-        this.GetComponent<Animator>().SetBool("Egging", false);
+       Egganimator.SetBool("Egging", false);
     }
     public EventScriptableObject GenEvent()
     {

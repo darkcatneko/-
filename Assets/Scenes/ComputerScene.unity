@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,7 +390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 261939851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1145739548}
+        m_TargetAssemblyTypeName: MainSceneDataCenter, Assembly-CSharp
+        m_MethodName: CloseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &261939851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,7 +2770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2982,9 +2994,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   HeartPics:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1086604550}
+  - {fileID: 281117427}
+  - {fileID: 1776251288}
+  Icons:
+  - {fileID: 1270842114}
+  - {fileID: 1670310273}
+  - {fileID: 1062905686}
   Fire: 0
   Unicorn: 0
   Taiwan: 0
@@ -3003,6 +3019,12 @@ MonoBehaviour:
   FirePic: {fileID: 0}
   UnicornPic: {fileID: 0}
   TaiwanPic: {fileID: 0}
+  Heart:
+  - {fileID: 21300000, guid: b6e1eb61aa9332247840adf8232a536b, type: 3}
+  - {fileID: 21300000, guid: d9a522c93ae006e4a95d02459f926409, type: 3}
+  Board:
+  - {fileID: 21300000, guid: 0985f6ae5df03fa4cade92ccb3917725, type: 3}
+  - {fileID: 21300000, guid: a05f80c752271644fa4975c6351bec4e, type: 3}
   DangerEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3152,7 +3174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3595,7 +3617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
