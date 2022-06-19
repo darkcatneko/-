@@ -8,7 +8,7 @@ public class EventScriptableObject :ScriptableObject
     public int ID;
     public EventType EventType;
     public Trigger Trigger;
-    public int ChangeValue;
+    public float ChangeValue;
     public Sprite EventPic;
     public float Chance;    
     [TextArea(15, 20)]
