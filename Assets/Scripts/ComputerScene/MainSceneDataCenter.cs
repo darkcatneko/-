@@ -21,6 +21,8 @@ public class MainSceneDataCenter : MonoBehaviour
     public Sprite[] Heart = new Sprite[2];
     public Sprite[] Board = new Sprite[2];
     public UnityEvent DangerEvent = new UnityEvent();
+
+    public GameObject EndBoard; public Image EndPic;public Text EndString;public Text EndViewer;public Image Rate;
     private void Awake()
     {
         instance = this;
@@ -51,6 +53,7 @@ public class MainSceneDataCenter : MonoBehaviour
             yield return new WaitForSeconds(4f);
             if (a.EventType == EventType.Negetive)
             {
+                GameObject se = Instantiate(Resources.Load<GameObject>("Bruh"));
                 EventBlock.GetComponent<Image>().sprite = Board[1];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
@@ -62,6 +65,9 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else if (a.EventType == EventType.Positive)
             {
+                int b;
+                b = Random.Range(1, 4);
+                GameObject se = Instantiate(Resources.Load<GameObject>("Positive_" + b.ToString()));
                 EventBlock.GetComponent<Image>().sprite = Board[0];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
@@ -73,6 +79,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else 
             {
+                GameObject se = Instantiate(Resources.Load<GameObject>("Bruh"));
                 EventBlock.GetComponent<Image>().sprite = Board[1];
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
@@ -97,6 +104,7 @@ public class MainSceneDataCenter : MonoBehaviour
                 HeartPics[0].sprite = Heart[0];
                 HeartPics[1].sprite = Heart[0];
                 HeartPics[2].sprite = Heart[0];
+                EndGame();
                 return;
             case 1:
                 HeartPics[0].sprite = Heart[1];
@@ -126,7 +134,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else
             {
-
+                EndGame();
             }
         }
         else if (a.Trigger == Trigger.Unicorn)
@@ -138,7 +146,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else
             {
-
+                EndGame();
             }
         }
          else
@@ -150,7 +158,7 @@ public class MainSceneDataCenter : MonoBehaviour
             }
             else
             {
-
+                EndGame();
             }
         }
         DangerEvent.RemoveAllListeners();
@@ -170,6 +178,28 @@ public class MainSceneDataCenter : MonoBehaviour
     public void eggEnd()
     {
        Egganimator.SetBool("Egging", false);
+    }
+    public void EndGame()
+    {
+        EndBoard.SetActive(true);
+        EndPic.sprite = mygame.myUniverse.UniversePic;
+        if (Viewer<=1000)
+        {
+            EndString.text = "你單身三十年的魔法並沒有甚麼用。\r\n 她終將像這樣默默無聞的畢業，\r\n然後跟某個不知名男子跑了吧。";
+        }
+        else if (Viewer <= 75000)
+        {
+            EndString.text = "藉由你的魔法，她在她最後的時光相較之前有了飛躍性的提升。\r\n或許仍然只是個小V，但存在於了某些人心中。\r\n但某天，你透過魔法卻看到，她的中之人跟某個不知名男子跑了......\r\n她們決定回鄉下養馬期待著有一天能夠在無馬紀念賽上獲勝";
+        }
+        else if (Viewer <= 100000)
+        {
+            EndString.text = "透過你的幫助，她在畢業前拿到了銀盾。\r\n她也算是一個能獨當一面的V了，許多人為她的畢業感到惋惜。\r\n但某天，你透過魔法卻看到，她的中之人跟某個不知名男子跑了......\r\n";
+        }
+        else
+        {
+            EndString.text = "她成為了了極為知名的Vtuber，畢業那天創造了最後的神回。\r\n 你從沒想過，過去那樣的她也有這一天。\r\n 然而某天，你聽到一旁的一對情侶在曬恩愛，你本來不以為意。\r\n但，女方的聲音卻讓你無比熟悉......";
+        }
+        EndViewer.text = Viewer.ToString();
     }
     public EventScriptableObject GenEvent()
     {

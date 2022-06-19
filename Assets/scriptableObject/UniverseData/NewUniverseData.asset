@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UniverseData:
   - {fileID: 11400000, guid: 901c72fef53d4404d81657d408b9e4df, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 005fc9e77a9d9844da5731e60e12d281, type: 2}
+  - {fileID: 11400000, guid: 99304bd894d18614f83265d9c3f4111c, type: 2}
+  - {fileID: 11400000, guid: 950daba21144ecc489d56fdc112d446c, type: 2}
+  - {fileID: 11400000, guid: e2d1bcc14f14ab2448e2cfe9e3090b6f, type: 2}
+  - {fileID: 11400000, guid: 45f488b793bad27478e372688fe1ae6d, type: 2}
+  - {fileID: 11400000, guid: 60e5f23ee2f2b2649a12f171121ed188, type: 2}
+  - {fileID: 11400000, guid: a7242325dde9df247812f5939e0ba780, type: 2}

@@ -16,9 +16,9 @@ public class SelectionScene : MonoBehaviour
     {
         int a;
         a = Random.Range(0, 7);
-        a = 0;                                                         //ด๚ธี
+        a = 0;
         This_universe = U_Data.FindUniverse(a);
-
+        GenSound();
         UniversePic.sprite = This_universe.UniversePic;
         UniverseName.text = This_universe.UniverseName;
         Describtion.text = This_universe.UniverseDescribe;
