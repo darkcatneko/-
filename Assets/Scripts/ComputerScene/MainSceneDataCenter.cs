@@ -18,7 +18,8 @@ public class MainSceneDataCenter : MonoBehaviour
     public Image EventPic; public Text EventName; public Text EventDescribe;public GameObject EventBlock;public Text ViewerChange;
     public EventDataBase eventdata;
     public Image FirePic; public Image UnicornPic; public Image TaiwanPic;
-
+    public Sprite[] Heart = new Sprite[2];
+    public Sprite[] Board = new Sprite[2];
     public UnityEvent DangerEvent = new UnityEvent();
     private void Awake()
     {
