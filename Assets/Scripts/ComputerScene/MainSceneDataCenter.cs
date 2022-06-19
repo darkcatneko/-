@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
+    public int Health = 3; public Image[] HeartPics = new Image[3];
+    public bool Fire;public bool Unicorn;public bool Taiwan;
     public static MainSceneDataCenter instance = new MainSceneDataCenter();
     public int Viewer = 0;public Image vtuber;
     public TextMeshProUGUI ViewerCount;
