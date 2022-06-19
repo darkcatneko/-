@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "EventDataBase", menuName = "EventDataBase")]
 public class EventDataBase : ScriptableObject
 {
     public List<EventScriptableObject> EventData = new List<EventScriptableObject>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MainSceneDataCenter : MonoBehaviour
     public EventDataBase eventdata;
     public Image FirePic; public Image UnicornPic; public Image TaiwanPic;
 
+    public UnityEvent DangerEvent = new UnityEvent();
     private void Awake()
     {
         instance = this;
@@ -41,24 +43,36 @@ public class MainSceneDataCenter : MonoBehaviour
             Egganimator.SetBool("Egging", true);
             if (a.EventType == EventType.Negetive)
             {
-                //正版
+                //反版
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
                 EventDescribe.text = a.EventDescribe;
-                Viewer = Mathf.RoundToInt( Viewer * a.ChangeValue);
+                Viewer = Mathf.RoundToInt( Viewer * (100-a.ChangeValue)*0.01f);
                 ViewerChange.color = Color.red;
                 ViewerChange.text = "-  " + a.ChangeValue.ToString() + "%";
                 //生成音效
             }
-            if (a.EventType == EventType.Positive)
+            else if (a.EventType == EventType.Positive)
             {
-                //反版
+                //正版
                 EventPic.sprite = a.EventPic;
                 EventName.text = a.EventName;
                 EventDescribe.text = a.EventDescribe;
                 Viewer += (int)a.ChangeValue;
                 ViewerChange.color = Color.green;
                 ViewerChange.text = "+  " + a.ChangeValue.ToString() ;               
+                //生成音效
+            }
+            else 
+            {
+                //反版
+                EventPic.sprite = a.EventPic;
+                EventName.text = a.EventName;
+                EventDescribe.text = a.EventDescribe;
+                Viewer = Mathf.RoundToInt(Viewer * (100 - a.ChangeValue) * 0.01f);
+                ViewerChange.color = Color.red;
+                ViewerChange.text = "-  " + a.ChangeValue.ToString() + "%";
+                DangerEvent.AddListener(()=> { CheckDanger(a); });
                 //生成音效
             }
             EventBlock.SetActive(true);
@@ -73,7 +87,7 @@ public class MainSceneDataCenter : MonoBehaviour
         {
             if (Fire == false)
             {
-
+                Fire = true;
             }
             else
             {
@@ -84,7 +98,7 @@ public class MainSceneDataCenter : MonoBehaviour
         {
             if (Unicorn == false)
             {
-
+                Unicorn = true;
             }
             else
             {
@@ -95,19 +109,24 @@ public class MainSceneDataCenter : MonoBehaviour
         {
             if (Taiwan == false)
             {
-
+                Taiwan = true;
             }
             else
             {
 
             }
         }
+        DangerEvent.RemoveAllListeners();
     }
     public void CloseEvent()
     {
         if (State == GameState.EventTrigger)
         {
             EventBlock.SetActive(false);
+            if (DangerEvent!=null)
+            {
+                DangerEvent.Invoke();
+            }
             State = GameState.FreeMove;
         }
     }

@@ -21,6 +21,7 @@ public enum EventType
 {
     Positive,
     Negetive,
+    Danger,
 }
 [System.Serializable]
 public enum Trigger
