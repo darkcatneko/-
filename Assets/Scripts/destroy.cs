@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class destroy : MonoBehaviour
 {
-    public int deathtime = 1;
+    public int deathtime = 10;
     void Start()
     {
         Destroy(this.gameObject, deathtime);
